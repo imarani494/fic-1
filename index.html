@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Alignment Example</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: blue;
+        align-items: center;
+      }
+      .left {
+        text-align: left;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background-color: blue;
+      }
+      .right {
+        text-align: right;
+        color: white;
+        display: flex;
+        gap: 20px;
+      }
+      .right span {
+        margin-right: 20px;
+      }
+      .right span:last-child {
+        margin-right: 0;
+      }
+
+      .background-container {
+        height: 290px;
+        width: 250px;
+        background-color: red;
+        background-image: url("data:image/jpeg;base64,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");
+        background-size: cover;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 9px;
+        color: white;
+        text-align: center;
+      }
+      .background-container .text {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .background-container .button {
+        margin-top: 10px;
+        padding: 10px 40px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .background-container .button:hover {
+        background-color: darkblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbQVL3zoPEbcEUODZWaCCDYxMY8_hrknAtAw&usqp=CAU"
+          alt=""
+          height="80"
+        />
+      </div>
+      <div class="right">
+        <span>About</span>
+        <span>HomeTalkAbout</span>
+        <section><span>English</span></section>
+      </div>
+    </div>
+    <div style="height: 80vh; width: 100%; background-color: blue">
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div>
+          <img
+            src="https://ali-global-cdn.hellotalk8.com/www/image/hellotalk-phone-header.png?ver=0.1.0&x-oss-process=image/format,webp,image/resize,w_750"
+            alt=""
+            height="600"
+            width="500"
+          />
+        </div>
+        <div
+          style="
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+            width: 40%;
+            height: 30vh;
+          "
+        >
+          <h1
+            style="
+              font-size: 30px;
+              font-weight: 500;
+              margin: 0;
+              padding: 0;
+              color: white;
+            "
+          >
+            Talk To The World
+          </h1>
+          <p
+            style="
+              font-size: 16px;
+              font-weight: 400;
+              margin: 0;
+              padding: 0;
+              color: white;
+            "
+          >
+            Learn a language for free by chatting with
+          </p>
+          <p
+            style="
+              font-size: 16px;
+              font-weight: 400;
+              margin: 0;
+              padding: 0;
+              color: white;
+            "
+          >
+            native speakers around the world!
+          </p>
+          <div
+            style="
+              height: 250px;
+              width: 250px;
+              gap: 20px;
+              display: flex;
+              margin-top: 20px;
+              border-radius: 9px;
+            "
+          >
+            <img
+              src="data:image/png;base64,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"
+              alt=""
+            />
+
+            <img
+              src="data:image/png;base64,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"
+              alt=""
+            />
+          </div>
+          <div
+            style="
+              flex-direction: row;
+              justify-content: space-between;
+              display: flex;
+              gap: 20px;
+              margin-top: 20px;
+            "
+          >
+            <div style="color: white">
+              <hi style="font-size: 20px; font-weight: 500">150+</hi>
+              <p style="font-size: 20px; font-weight: 500">
+                Language Supported
+              </p>
+            </div>
+
+            <div style="color: white">
+              <hi style="font-size: 20px; font-weight: 500">150+</hi>
+              <p style="font-size: 20px; font-weight: 500">Member with chat</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 30px;
+      "
+    >
+      <h1>The UItimate Language Exchange</h1>
+      <p style="font-size: 16px; font-weight: 500; color: gray">
+        Learn a language, explore new cultures, and make friends around the
+        world
+      </p>
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          margin: 40px;
+        "
+      >
+        <img
+          src="https://ali-global-cdn.hellotalk8.com/wp-content/uploads/2017/07/worldwide-icon.svg"
+          alt=""
+        />
+        <h1 style="padding: 0; margin: 0">Worldwide Community</h1>
+        <p style="padding: 0; margin: 0; margin-top: 30px; color: gray">
+          Native speakers teach you their language, while you teach them
+        </p>
+        <p style="padding: 0; margin: 0; color: gray">
+          yours. Millions of people use HelloTalk to practice 150+ languages.
+        </p>
+      </div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          margin: 40px;
+        "
+      >
+        <img
+          src="https://ali-global-cdn.hellotalk8.com/wp-content/uploads/2017/07/text-voice-video-icon.svg"
+          alt=""
+        />
+        <h1>Text, Voice, Video, and More</h1>
+        <p style="padding: 0; margin: 0; margin-top: 30px; color: gray">
+          Chat with language partners through text and voice messages,
+        </p>
+        <p style="padding: 0; margin: 0; color: gray">
+          stickers, voice and video calls, and interactive Voicerooms and
+        </p>
+        <p style="padding: 0; margin: 0; color: gray">
+          Lives. Whatever your communication preference, choose the
+        </p>
+        <p style="padding: 0; margin: 0; color: gray">
+          method that best fits your learning goals!
+        </p>
+      </div>
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          margin: 40px;
+        "
+      >
+        <img
+          src="https://ali-global-cdn.hellotalk8.com/wp-content/uploads/2017/07/worldwide-icon.svg"
+          alt=""
+        />
+        <h1 style="padding: 0; margin: 0">Worldwide Community</h1>
+        <p style="padding: 0; margin: 0; margin-top: 30px; color: gray">
+          Native speakers teach you their language, while you teach them
+        </p>
+        <p style="padding: 0; margin: 0; color: gray">
+          yours. Millions of people use HelloTalk to practice 150+ languages.
+        </p>
+      </div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          margin: 40px;
+        "
+      >
+        <img
+          src="https://ali-global-cdn.hellotalk8.com/wp-content/uploads/2017/07/text-voice-video-icon.svg"
+          alt=""
+        />
+        <h1>Text, Voice, Video, and More</h1>
+        <p style="padding: 0; margin: 0; margin-top: 30px; color: gray">
+          Chat with language partners through text and voice messages,
+        </p>
+        <p style="padding: 0; margin: 0; color: gray">
+          stickers, voice and video calls, and interactive Voicerooms and
+        </p>
+        <p style="padding: 0; margin: 0; color: gray">
+          Lives. Whatever your communication preference, choose the
+        </p>
+        <p style="padding: 0; margin: 0; color: gray">
+          method that best fits your learning goals!
+        </p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center;justify-content: center;gap: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center">
+      <div class="background-container">
+        <div
+          style="
+            height: 40px;
+            width: 40px;
+            background-color: red;
+            border-radius: 30px;
+            /* margin-top: -90px; */
+            margin-right: 150px;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <img
+            style="height: 40px; width: 40px"
+            src="https://cdn-icons-png.flaticon.com/128/10597/10597864.png"
+            alt=""
+          />
+        </div>
+      
+        <div
+          style="
+            height: 40px;
+            width: 196px;
+            background-color: rgb(184, 179, 179);
+            display: flex;
+            border-radius: 9px;
+            margin-top: 180px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+          "
+        >
+    <img style="height: 20px;width: 20px;" src="https://image.shutterstock.com/image-vector/chat-icon-trendy-flat-style-260nw-2285277161.jpg" alt="">
+    <h1 style="font-size: 14px;font-weight: 400;">Start Chatti</h1>
+    </div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center">
+        <div class="background-container">
+          <div
+            style="
+              height: 40px;
+              width: 40px;
+              background-color: red;
+              border-radius: 30px;
+              /* margin-top: -90px; */
+              margin-right: 150px;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <img
+              style="height: 40px; width: 40px"
+              src="https://cdn-icons-png.flaticon.com/128/10597/10597864.png"
+              alt=""
+            />
+          </div>
+        
+          <div
+            style="
+              height: 40px;
+              width: 196px;
+              background-color: rgb(184, 179, 179);
+              display: flex;
+              border-radius: 9px;
+              margin-top: 180px;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              gap: 10px;
+            "
+          >
+      <img style="height: 20px;width: 20px;" src="https://image.shutterstock.com/image-vector/chat-icon-trendy-flat-style-260nw-2285277161.jpg" alt="">
+      <h1 style="font-size: 14px;font-weight: 400;">Start Chatti</h1>
+      </div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center">
+        <div class="background-container">
+          <div
+            style="
+              height: 40px;
+              width: 40px;
+              background-color: red;
+              border-radius: 30px;
+              /* margin-top: -90px; */
+              margin-right: 150px;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <img
+              style="height: 40px; width: 40px"
+              src="https://cdn-icons-png.flaticon.com/128/10597/10597864.png"
+              alt=""
+            />
+          </div>
+        
+          <div
+            style="
+              height: 40px;
+              width: 196px;
+              background-color: rgb(184, 179, 179);
+              display: flex;
+              border-radius: 9px;
+              margin-top: 180px;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              gap: 10px;
+            "
+          >
+      <img style="height: 20px;width: 20px;" src="https://image.shutterstock.com/image-vector/chat-icon-trendy-flat-style-260nw-2285277161.jpg" alt="">
+      <h1 style="font-size: 14px;font-weight: 400;">Start Chatti</h1>
+      </div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center">
+        <div class="background-container">
+          <div
+            style="
+              height: 40px;
+              width: 40px;
+              background-color: red;
+              border-radius: 30px;
+              /* margin-top: -90px; */
+              margin-right: 150px;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <img
+              style="height: 40px; width: 40px"
+              src="https://cdn-icons-png.flaticon.com/128/10597/10597864.png"
+              alt=""
+            />
+          </div>
+        
+          <div
+            style="
+              height: 40px;
+              width: 196px;
+              background-color: rgb(184, 179, 179);
+              display: flex;
+              border-radius: 9px;
+              margin-top: 180px;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              gap: 10px;
+            "
+          >
+      <img style="height: 20px;width: 20px;" src="https://image.shutterstock.com/image-vector/chat-icon-trendy-flat-style-260nw-2285277161.jpg" alt="">
+      <h1 style="font-size: 14px;font-weight: 400;">Start Chatti</h1>
+      </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
